@@ -1,0 +1,23 @@
+const db = require('../db');
+async function createUser({ name, age, email }) {
+  const [result] = await db.execute('INSERT INTO user2 (name, age, email) VALUES (?, ?, ?)', [name, age, email]);
+  return { id: result.insertId, name, age, email };
+}
+async function getUsers() {
+  const [rows] = await db.execute('SELECT * FROM user2');
+  return rows;
+}
+async function updateUser(userId, { name, age, email }) {
+  await db.execute('UPDATE user2 SET name=?, age=?, email=? WHERE id=?', [name, age, email, userId]);
+  return { id: userId, name, age, email };
+}
+async function deleteUser(userId) {
+  await db.execute('DELETE FROM user2 WHERE id = ?', [userId]);
+  return { id: userId, message: 'Deletion successful' };
+}
+module.exports = {
+  createUser,
+  getUsers,
+  updateUser,
+  deleteUser,
+};

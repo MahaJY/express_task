@@ -1,0 +1,14 @@
+{
+	"folders": [
+		{
+			"path": "../../node_workspace"
+		},
+		{
+			"path": "../../excel"
+		},
+		{
+			"path": ".."
+		}
+	],
+	"settings": {}
+}
